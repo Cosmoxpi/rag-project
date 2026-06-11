@@ -1,518 +1,258 @@
-# \# 🚀 RAG Assistant
+# 🚀 RAG Assistant
 
-# 
+> AI-Powered Retrieval-Augmented Generation (RAG) Platform for PDF Document Intelligence
 
-# > AI-Powered Retrieval-Augmented Generation (RAG) Platform for PDF Document Intelligence
+![Python](https://img.shields.io/badge/Python-3.11+-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Database-orange)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED)
+![AWS](https://img.shields.io/badge/AWS-EC2-FF9900)
+![License](https://img.shields.io/badge/License-MIT-success)
 
-# 
+---
 
-# !\[Python](https://img.shields.io/badge/Python-3.11+-blue)
+## 🌟 Overview
 
-# !\[FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+RAG Assistant is a full-stack AI application that enables users to upload PDF documents, generate vector embeddings, store them in ChromaDB, and interact with their documents through a modern AI-powered chat interface.
 
-# !\[React](https://img.shields.io/badge/React-Frontend-61DAFB)
+The system combines semantic search, vector databases, and Large Language Models (LLMs) to provide accurate answers grounded in uploaded documents.
 
-# !\[TypeScript](https://img.shields.io/badge/TypeScript-5+-3178C6)
+---
 
-# !\[ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Database-orange)
+## ✨ Features
 
-# !\[Docker](https://img.shields.io/badge/Docker-Containerized-2496ED)
+### 📄 Document Processing
 
-# !\[AWS](https://img.shields.io/badge/AWS-EC2-FF9900)
+* Upload PDF documents
+* Automatic text extraction
+* Intelligent chunking
+* Vector embedding generation
+* Persistent document storage
+
+### 🔍 Retrieval-Augmented Generation
+
+* Semantic search using ChromaDB
+* Context-aware retrieval
+* Relevant source selection
+* Citation-based answers
+
+### 🤖 AI Chat Interface
+
+* ChatGPT-style UI
+* Real-time responses
+* Source references
+* Document-aware conversations
+
+### 🎨 Modern Frontend
 
-# !\[License](https://img.shields.io/badge/License-MIT-success)
+* React + TypeScript
+* Tailwind CSS
+* Responsive design
+* Dark mode support
+* Dashboard analytics
 
-# 
+### ⚡ Backend API
 
-# \---
+* FastAPI
+* RESTful endpoints
+* Dockerized deployment
+* AWS EC2 hosting
 
-# 
+---
 
-# \## 🌟 Overview
+## 🏗️ System Architecture
 
-# 
+```text
+User
+ │
+ ▼
+Frontend (React + TypeScript)
+ │
+ ▼
+FastAPI Backend
+ │
+ ├── PDF Processing
+ ├── Embedding Generation
+ ├── Semantic Search
+ │
+ ▼
+ChromaDB Vector Store
+ │
+ ▼
+AI Response Generation
+ │
+ ▼
+Answer + Source Citations
+```
 
-# RAG Assistant is a full-stack AI application that enables users to upload PDF documents, generate vector embeddings, store them in ChromaDB, and interact with their documents through a modern AI-powered chat interface.
+---
 
-# 
+## 🛠️ Tech Stack
 
-# The system combines semantic search, vector databases, and Large Language Models (LLMs) to provide accurate answers grounded in uploaded documents.
+### Frontend
 
-# 
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Axios
 
-# \---
+### Backend
 
-# 
+* FastAPI
+* Python
+* ChromaDB
+* Uvicorn
 
-# \## ✨ Features
+### DevOps
 
-# 
+* Docker
+* AWS EC2
+* GitHub
+* Vercel
 
-# \### 📄 Document Processing
+---
 
-# 
+## 📂 Project Structure
 
-# \* Upload PDF documents
+```text
+project-root/
+│
+├── src/                # Frontend Source
+├── public/             # Static Assets
+│
+├── rag/                # RAG Engine
+├── main.py             # FastAPI Entry Point
+├── requirements.txt    # Python Dependencies
+├── Dockerfile
+├── docker-compose.yml
+│
+├── package.json
+├── vite.config.ts
+└── README.md
+```
 
-# \* Automatic text extraction
+---
 
-# \* Intelligent chunking
+## 🚀 Installation
 
-# \* Vector embedding generation
+### Frontend
 
-# \* Persistent document storage
+```bash
+npm install
+npm run dev
+```
 
-# 
+Runs at:
 
-# \### 🔍 Retrieval-Augmented Generation
+```text
+http://localhost:5173
+```
 
-# 
+---
 
-# \* Semantic search using ChromaDB
+### Backend
 
-# \* Context-aware retrieval
+```bash
+pip install -r requirements.txt
+python main.py
+```
 
-# \* Relevant source selection
+Runs at:
 
-# \* Citation-based answers
+```text
+http://localhost:8000
+```
 
-# 
+---
 
-# \### 🤖 AI Chat Interface
+## 🐳 Docker Deployment
 
-# 
+Build:
 
-# \* ChatGPT-style UI
+```bash
+docker build -t rag-api .
+```
 
-# \* Real-time responses
+Run:
 
-# \* Source references
+```bash
+docker run -p 8000:8000 rag-api
+```
 
-# \* Document-aware conversations
+---
 
-# 
+## 📡 API Endpoints
 
-# \### 🎨 Modern Frontend
+### Health Check
 
-# 
+```http
+GET /health
+```
 
-# \* React + TypeScript
+### Upload Document
 
-# \* Tailwind CSS
+```http
+POST /upload
+```
 
-# \* Responsive design
+### List Documents
 
-# \* Dark mode support
+```http
+GET /documents
+```
 
-# \* Dashboard analytics
+### Delete Document
 
-# 
+```http
+DELETE /documents/{filename}
+```
 
-# \### ⚡ Backend API
+### Query Documents
 
-# 
+```http
+POST /query
+```
 
-# \* FastAPI
+---
 
-# \* RESTful endpoints
+## 🔒 Security Notes
 
-# \* Dockerized deployment
+* Environment variables stored in `.env`
+* Secrets excluded from Git
+* Vector database stored locally
+* Docker-ready deployment
 
-# \* AWS EC2 hosting
+---
 
-# 
+## 📈 Future Improvements
 
-# \---
+* User Authentication
+* Multi-document Collections
+* Streaming Responses
+* Role-Based Access Control
+* Hybrid Search
+* OpenAI / Local LLM Support
+* Document Summarization
 
-# 
+---
 
-# \## 🏗️ System Architecture
+## 👨‍💻 Author
 
-# 
+**Manglam**
 
-# ```text
+AI • Full Stack Development • Cloud • RAG Systems
 
-# User
+---
 
-# &#x20;│
+## ⭐ Support
 
-# &#x20;▼
+If you found this project useful:
 
-# Frontend (React + TypeScript)
+⭐ Star the repository
 
-# &#x20;│
+🍴 Fork the project
 
-# &#x20;▼
-
-# FastAPI Backend
-
-# &#x20;│
-
-# &#x20;├── PDF Processing
-
-# &#x20;├── Embedding Generation
-
-# &#x20;├── Semantic Search
-
-# &#x20;│
-
-# &#x20;▼
-
-# ChromaDB Vector Store
-
-# &#x20;│
-
-# &#x20;▼
-
-# AI Response Generation
-
-# &#x20;│
-
-# &#x20;▼
-
-# Answer + Source Citations
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## 🛠️ Tech Stack
-
-# 
-
-# \### Frontend
-
-# 
-
-# \* React
-
-# \* TypeScript
-
-# \* Vite
-
-# \* Tailwind CSS
-
-# \* Axios
-
-# 
-
-# \### Backend
-
-# 
-
-# \* FastAPI
-
-# \* Python
-
-# \* ChromaDB
-
-# \* Uvicorn
-
-# 
-
-# \### DevOps
-
-# 
-
-# \* Docker
-
-# \* AWS EC2
-
-# \* GitHub
-
-# \* Vercel
-
-# 
-
-# \---
-
-# 
-
-# \## 📂 Project Structure
-
-# 
-
-# ```text
-
-# project-root/
-
-# │
-
-# ├── src/                # Frontend Source
-
-# ├── public/             # Static Assets
-
-# │
-
-# ├── rag/                # RAG Engine
-
-# ├── main.py             # FastAPI Entry Point
-
-# ├── requirements.txt    # Python Dependencies
-
-# ├── Dockerfile
-
-# ├── docker-compose.yml
-
-# │
-
-# ├── package.json
-
-# ├── vite.config.ts
-
-# └── README.md
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## 🚀 Installation
-
-# 
-
-# \### Frontend
-
-# 
-
-# ```bash
-
-# npm install
-
-# npm run dev
-
-# ```
-
-# 
-
-# Runs at:
-
-# 
-
-# ```text
-
-# http://localhost:5173
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \### Backend
-
-# 
-
-# ```bash
-
-# pip install -r requirements.txt
-
-# python main.py
-
-# ```
-
-# 
-
-# Runs at:
-
-# 
-
-# ```text
-
-# http://localhost:8000
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## 🐳 Docker Deployment
-
-# 
-
-# Build:
-
-# 
-
-# ```bash
-
-# docker build -t rag-api .
-
-# ```
-
-# 
-
-# Run:
-
-# 
-
-# ```bash
-
-# docker run -p 8000:8000 rag-api
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## 📡 API Endpoints
-
-# 
-
-# \### Health Check
-
-# 
-
-# ```http
-
-# GET /health
-
-# ```
-
-# 
-
-# \### Upload Document
-
-# 
-
-# ```http
-
-# POST /upload
-
-# ```
-
-# 
-
-# \### List Documents
-
-# 
-
-# ```http
-
-# GET /documents
-
-# ```
-
-# 
-
-# \### Delete Document
-
-# 
-
-# ```http
-
-# DELETE /documents/{filename}
-
-# ```
-
-# 
-
-# \### Query Documents
-
-# 
-
-# ```http
-
-# POST /query
-
-# ```
-
-# 
-
-# \---
-
-# 
-
-# \## 🔒 Security Notes
-
-# 
-
-# \* Environment variables stored in `.env`
-
-# \* Secrets excluded from Git
-
-# \* Vector database stored locally
-
-# \* Docker-ready deployment
-
-# 
-
-# \---
-
-# 
-
-# \## 📈 Future Improvements
-
-# 
-
-# \* User Authentication
-
-# \* Multi-document Collections
-
-# \* Streaming Responses
-
-# \* Role-Based Access Control
-
-# \* Hybrid Search
-
-# \* OpenAI / Local LLM Support
-
-# \* Document Summarization
-
-# 
-
-# \---
-
-# 
-
-# \## 👨‍💻 Author
-
-# 
-
-# \*\*Manglam\*\*
-
-# 
-
-# AI • Full Stack Development • Cloud • RAG Systems
-
-# 
-
-# \---
-
-# 
-
-# \## ⭐ Support
-
-# 
-
-# If you found this project useful:
-
-# 
-
-# ⭐ Star the repository
-
-# 
-
-# 🍴 Fork the project
-
-# 
-
-# 🚀 Build something amazing
-
-
-
+🚀 Build something amazing
