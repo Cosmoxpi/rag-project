@@ -1,0 +1,28 @@
+# Web framework
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12
+
+# LangChain — let pip resolve compatible versions
+langchain>=0.3.7,<0.4.0
+langchain-openai>=0.2.9,<0.3.0
+langchain-community>=0.3.7,<0.4.0
+langchain-text-splitters>=0.3.0,<0.4.0
+
+# Vector store
+chromadb==0.4.24
+
+# PDF parsing
+PyMuPDF==1.24.13
+
+# OpenAI
+openai==1.54.5
+
+# AWS
+boto3==1.35.67
+
+# Utilities
+python-dotenv==1.0.1
+pydantic==2.9.2
+tiktoken==0.8.0
+numpy==1.26.4
