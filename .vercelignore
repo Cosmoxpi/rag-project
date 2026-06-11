@@ -1,0 +1,8 @@
+main.py
+requirements.txt
+rag/
+Dockerfile
+docker-compose.yml
+venv/
+chroma_db/
+test_db/
