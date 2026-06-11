@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://43.205.198.95:8000";
+// Use Vercel proxy instead of direct EC2 URL
+const API_URL = "/api";
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -10,7 +11,8 @@ export const api = axios.create({
 export interface HealthResponse {
   status: string;
   documents?: number;
-  chunks?: number;
+  total_documents?: number;
+  total_chunks?: number;
   [key: string]: unknown;
 }
 
@@ -39,34 +41,58 @@ export const ragApi = {
     const { data } = await api.get("/health");
     return data;
   },
-  upload: async (file: File, onProgress?: (pct: number) => void) => {
-    const form = new FormData();
-    form.append("file", file);
-    const { data } = await api.post("/upload", form, {
-      headers: { "Content-Type": "multipart/form-data" },
-      onUploadProgress: (e) => {
-        if (e.total && onProgress) onProgress(Math.round((e.loaded / e.total) * 100));
+
+  upload: async (
+    file: File,
+    onProgress?: (pct: number) => void
+  ) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const { data } = await api.post("/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      onUploadProgress: (event) => {
+        if (event.total && onProgress) {
+          onProgress(
+            Math.round((event.loaded * 100) / event.total)
+          );
+        }
       },
     });
+
     return data;
   },
+
   listDocuments: async (): Promise<DocumentItem[]> => {
     const { data } = await api.get("/documents");
+
     if (Array.isArray(data)) return data;
     if (Array.isArray(data?.documents)) return data.documents;
+
     return [];
   },
+
   deleteDocument: async (filename: string) => {
-    const { data } = await api.delete(`/documents/${encodeURIComponent(filename)}`);
+    const { data } = await api.delete(
+      `/documents/${encodeURIComponent(filename)}`
+    );
     return data;
   },
+
   query: async (question: string): Promise<QueryResponse> => {
-    const { data } = await api.post("/query", { query: question, question });
+    const { data } = await api.post("/query", {
+      question,
+      top_k: 5,
+    });
+
     return {
-      answer: data.answer || data.response || data.result || "",
-      sources: data.sources || data.citations || [],
+      answer: data.answer || "",
+      sources: data.sources || [],
     };
   },
 };
 
+export default ragApi;
 export { API_URL };

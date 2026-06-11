@@ -1,4 +1,10 @@
-{
+ {
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "http://43.205.198.95:8000/$1"
+    }
+  ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist"
 }
